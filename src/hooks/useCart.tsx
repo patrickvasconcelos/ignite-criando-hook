@@ -1,4 +1,3 @@
-import { resourceUsage } from 'process';
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { api } from '../services/api';
