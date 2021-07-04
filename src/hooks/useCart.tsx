@@ -37,7 +37,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     try {
       const newCart = [...cart]
       const product = newCart.find(product => product.id === productId)
-      const amount = product ? product.amount : 1;
+      const amount = product ? product.amount + 1 : 1;
       const response = await api.get(`/stock/${productId}`)
       const stockAmount = response.data.amount;
 
@@ -47,7 +47,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       }
 
       if (product) {
-        product.amount += 1
+        product.amount = amount
       } else {
         const responseProduct = await api.get(`/products/${productId}`)
         const newProduct = { ...responseProduct.data, amount }
